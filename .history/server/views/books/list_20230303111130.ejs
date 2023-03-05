@@ -1,0 +1,67 @@
+
+<% include ../partials/header.ejs %>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-10">
+          <h3>Favourite Books List </h3>
+          <!-- ------------------------ -->
+          <!-- FIX THE ADD BUTTON BELOW -->
+          <!-- ------------------------ -->
+          <!-- insert the correct route in the href attribute -->
+          <a href="/book/add" class="btn btn-primary align-self-end" role="button">
+            <i class="fas fa-plus-circle"></i> 
+            Add a new Item
+        </a>                
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <!-- Header Row-->
+            <tr>
+                <th class="text-center">Title</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Price</th>                    
+                <th class="text-center">Author</th>
+                <th class="text-center">Genre</th>
+                <th class="text-center" colspan="2">Actions</th>
+            </tr>
+                <!-- Template Row -->
+                <% for (let count = 0; count < books.length; count++) { %>
+                <tr>
+                  <td><%= books[count].Title %></td>
+                  <td class="text-center">$<%= books[count].Price %></td>
+                  <td class="text-center"><%= books[count].Author %></td>
+                  <td class="text-center"><%= books[count].Genre %></td>
+
+                  <td class="text-center">
+                    <!-- ------------------------ -->
+                    <!-- ADD the EDIT BUTTON HERE -->
+                    <!-- ------------------------ -->
+                    <td class="text-center col-1"><a href="/books/edit/<%=Books[count]._id%>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i>Edit</a></td>
+                
+                  </td>
+
+                  <td class="text-center">
+                    <!-- ------------------------ -->
+                    <!-- ADD the DELETE BUTTON HERE -->
+                    <!-- ------------------------ -->                 
+                    <td class="text-center col-1"><a href="/books/delete/<%=Books[count]._id%>" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</a></td>
+                  
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+           <div class="col-md-offset-1 col-md-10 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<% include ../partials/footer.ejs %>
+
+
